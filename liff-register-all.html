@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>過敏原登記表</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+</head>
+<body class="p-3">
+
+  <h2>📝 註冊 &🧾 過敏原登記表</h2>
+  <form id="registerForm">
+
+    <!-- 基本資料 -->
+    <div class="mb-3">
+      <label class="form-label">姓名</label>
+      <input type="text" name="name" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">學號</label>
+      <input type="text" name="studentId" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">身高 (cm)</label>
+      <input type="number" name="height" class="form-control" min="100" max="250" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">體重 (kg)</label>
+      <input type="number" name="weight" class="form-control" min="20" max="200" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">年齡</label>
+      <input type="number" name="age" class="form-control" min="1" max="120" required>
+    </div>
+
+    <div class="mb-3 form-check">
+      <input type="checkbox" name="isParent" class="form-check-input" id="isParent">
+      <label class="form-check-label" for="isParent">是否為家長</label>
+    </div>
+
+    <!-- 過敏原（可複選） -->
+    <div class="mb-3">
+      <label class="form-label d-block">過敏原（可複選）</label>
+
+      <!-- 奶類 -->
+      <fieldset class="border rounded p-3 mb-3">
+        <legend class="fs-6 mb-2 px-2">奶類</legend>
+        <div class="form-check">
+          <input class="form-check-input allergen-checkbox" type="checkbox" id="milk-牛奶" value="奶類:牛奶">
+          <label class="form-check-label" for="milk-牛奶">牛奶</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input allergen-checkbox" type="checkbox" id="milk-奶粉" value="奶類:奶粉">
+          <label class="form-check-label" for="milk-奶粉">奶粉</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input allergen-checkbox" type="checkbox" id="milk-起司" value="奶類:起司">
+          <label class="form-check-label" for="milk-起司">起司</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input allergen-checkbox" type="checkbox" id="milk-鮮奶油" value="奶類:鮮奶油">
+          <label class="form-check-label" for="milk-鮮奶油">鮮奶油</label>
+        </div>
+      </fieldset>
+
+      <!-- 蛋類 -->
+      <fieldset class="border rounded p-3 mb-3">
+        <legend class="fs-6 mb-2 px-2">蛋類</legend>
+        <div class="form-check">
+          <input class="form-check-input allergen-checkbox" type="checkbox" id="egg-雞蛋" value="蛋類:雞蛋">
+          <label class="form-check-label" for="egg-雞蛋">雞蛋</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input allergen-checkbox" type="checkbox" id="egg-鴨蛋" value="蛋類:鴨蛋">
+          <label class="form-check-label" for="egg-鴨蛋">鴨蛋</label>
+        </div>
+      </fieldset>
+
+      <!-- 豆類 -->
+      <fieldset class="border rounded p-3 mb-3">
+        <legend class="fs-6 mb-2 px-2">豆類</legend>
+        <div class="form-check">
+          <input class="form-check-input allergen-checkbox" type="checkbox" id="bean-黃豆" value="豆類:黃豆">
+          <label class="form-check-label" for="bean-黃豆">黃豆</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input allergen-checkbox" type="checkbox" id="bean-豆腐" value="豆類:豆腐">
+          <label class="form-check-label" for="bean-豆腐">豆腐</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input allergen-checkbox" type="checkbox" id="bean-豆漿" value="豆類:豆漿">
+          <label class="form-check-label" for="bean-豆漿">豆漿</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input allergen-checkbox" type="checkbox" id="bean-味噌" value="豆類:味噌">
+          <label class="form-check-label" for="bean-味噌">味噌</label>
+        </div>
+      </fieldset>
+
+      <!-- 堅果類 -->
+      <fieldset class="border rounded p-3 mb-3">
+        <legend class="fs-6 mb-2 px-2">堅果類</legend>
+        <div class="form-check">
+          <input class="form-check-input allergen-checkbox" type="checkbox" id="nut-花生" value="堅果類:花生">
+          <label class="form-check-label" for="nut-花生">花生</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input allergen-checkbox" type="checkbox" id="nut-核桃" value="堅果類:核桃">
+          <label class="form-check-label" for="nut-核桃">核桃</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input allergen-checkbox" type="checkbox" id="nut-杏仁" value="堅果類:杏仁">
+          <label class="form-check-label" for="nut-杏仁">杏仁</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input allergen-checkbox" type="checkbox" id="nut-腰果" value="堅果類:腰果">
+          <label class="form-check-label" for="nut-腰果">腰果</label>
+        </div>
+      </fieldset>
+
+      <!-- 海鮮 -->
+      <fieldset class="border rounded p-3 mb-3">
+        <legend class="fs-6 mb-2 px-2">海鮮</legend>
+        <div class="form-check">
+          <input class="form-check-input allergen-checkbox" type="checkbox" id="seafood-蝦" value="海鮮:蝦">
+          <label class="form-check-label" for="seafood-蝦">蝦</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input allergen-checkbox" type="checkbox" id="seafood-蟹" value="海鮮:蟹">
+          <label class="form-check-label" for="seafood-蟹">蟹</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input allergen-checkbox" type="checkbox" id="seafood-貝類" value="海鮮:貝類">
+          <label class="form-check-label" for="seafood-貝類">貝類</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input allergen-checkbox" type="checkbox" id="seafood-魚" value="海鮮:魚（鮭魚、鯛魚等）">
+          <label class="form-check-label" for="seafood-魚">魚（鮭魚、鯛魚等）</label>
+        </div>
+      </fieldset>
+
+      <!-- 小麥 / 麵粉 -->
+      <fieldset class="border rounded p-3 mb-3">
+        <legend class="fs-6 mb-2 px-2">小麥 / 麵粉</legend>
+        <div class="form-check">
+          <input class="form-check-input allergen-checkbox" type="checkbox" id="wheat-麵包" value="小麥/麵粉:麵包">
+          <label class="form-check-label" for="wheat-麵包">麵包</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input allergen-checkbox" type="checkbox" id="wheat-麵條" value="小麥/麵粉:麵條">
+          <label class="form-check-label" for="wheat-麵條">麵條</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input allergen-checkbox" type="checkbox" id="wheat-餅乾" value="小麥/麵粉:餅乾">
+          <label class="form-check-label" for="wheat-餅乾">餅乾</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input allergen-checkbox" type="checkbox" id="wheat-麵粉製品" value="小麥/麵粉:麵粉製品">
+          <label class="form-check-label" for="wheat-麵粉製品">麵粉製品</label>
+        </div>
+      </fieldset>
+
+      <!-- 芝麻 -->
+      <fieldset class="border rounded p-3 mb-3">
+        <legend class="fs-6 mb-2 px-2">芝麻</legend>
+        <div class="form-check">
+          <input class="form-check-input allergen-checkbox" type="checkbox" id="sesame-芝麻" value="芝麻:芝麻">
+          <label class="form-check-label" for="sesame-芝麻">芝麻</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input allergen-checkbox" type="checkbox" id="sesame-芝麻醬" value="芝麻:芝麻醬">
+          <label class="form-check-label" for="sesame-芝麻醬">芝麻醬</label>
+        </div>
+      </fieldset>
+    </div>
+    
+    <input type="hidden" name="liffUserId" id="userID" value="">
+    <input type="hidden" name="liffDisplayName" id="displayName" value="">
+
+    <!-- 按鈕與訊息 -->
+    <div class="d-flex align-items-center gap-3">
+      <button type="submit" id="submitBtn" class="btn btn-success">送出</button>
+      <div id="loading" class="text-muted" style="display:none;">
+        <div class="spinner-border spinner-border-sm text-success" role="status"></div>
+        <span class="ms-2">傳送中...</span>
+      </div>
+    </div>
+  </form>
+
+  <div id="message" class="mt-3" style="display:none;"></div>
+
+  <script>
+    const GAS_URL = "https://script.google.com/macros/s/AKfycby22rdYy_V4AVXdy8sogHyFl19vqhsGKMDFX87qZzy1S3vqaS-854bE8V2OeEEJ-jROpQ/exec";
+
+    async function initLiff() {
+      try {
+        await liff.init({ liffId: "2008230712-VXEYqgXx" });
+        if (!liff.isLoggedIn()) liff.login();
+        const profile = await liff.getProfile();
+        document.getElementById('userID').value = profile.userId || "";
+        document.getElementById('displayName').value = profile.displayName || "";
+      } catch (err) {
+        alert("LIFF 初始化失敗: " + JSON.stringify(err));
+      }
+    }
+
+    function showMessage(text, type) {
+      const messageDiv = document.getElementById("message");
+      messageDiv.textContent = text;
+      messageDiv.className = "alert " + (type === "success" ? "alert-success" : "alert-danger");
+      messageDiv.style.display = "block";
+    }
+
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      const loading = document.getElementById('loading');
+      const msg = document.getElementById('message');
+
+      // 顯示載入動畫，避免重複送出
+      btn.disabled = true;
+      loading.style.display = "inline-flex";
+      msg.style.display = "none";
+      try {
+        // 收集所有被勾選的過敏原
+        const allergenCheckboxes = document.querySelectorAll('.allergen-checkbox:checked');
+        const allergens = Array.from(allergenCheckboxes).map(cb => cb.value);
+
+        // 準備送出的資料
+        const formData = new FormData(e.target);
+        formData.append('allergens', allergens.join('||')); // 用 || 分隔
+
+        // 送出到 Google Apps Script
+        const response = await fetch(GAS_URL, {
+          method: 'POST',
+          body: formData
+        });
+
+        const result = await response.text();
+        
+        // 發送 LIFF 訊息並關閉視窗
+        try {
+          await liff.sendMessages([{ type: 'text', text: '註冊和過敏原登記完成' }]);
+          liff.closeWindow();
+        } catch (err) {
+          console.warn("訊息發送失敗", err);
+          showMessage("✅ " + result, "success");
+        } finally {
+          // 即使失敗也恢復按鈕與隱藏 loading
+          btn.disabled = false;
+          loading.style.display = "none";
+        }
+
+      } catch (err) {
+        showMessage("❌ 送出失敗: " + err.message, "danger");
+      }
+    });
+
+    initLiff();
+  </script>
+</body>
+</html>
